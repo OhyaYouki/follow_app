@@ -1,24 +1,48 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## DB 設計
 
-Things you may want to cover:
+## users table
 
-* Ruby version
+| Column             | Type                | Options                                       |
+| ------------------ | ------------------- | --------------------------------------------- |
+| nickname           | string              | null: false                                   |
+| email              | devise のデフォルト   | null: false                                   |
+| encrypted_password | devise のデフォルト   | null: false                                   |
 
-* System dependencies
+### Association
 
-* Configuration
+* has_many :posts
 
-* Database creation
+* has_many :relationships        , foreign_key: "user_id"
+* has_many :following            , through: :relationships           , source: :following
+* has_many :passive_relationships, class_name: 'Relationship'        , foreign_key: 'follow_id'
+* has_many :followers            , through: :reverse_of_relationships, source: :user
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## posts table
 
-* Deployment instructions
+| Column              | Type               | Options                                       |
+| ------------------- | ------------------ | --------------------------------------------- |
+| content             | string             | null: false                                   |
+| user                | references         | null: false,foreign_key: true                 |
 
-* ...
+### Association
+
+* belongs_to :user
+
+
+## relationships table
+
+| Column              | Type               | Options                                       |
+| ------------------- | ------------------ | --------------------------------------------- |
+| user                | references         | null: false,foreign_key: true                 |
+| following           | references         | null: false,foreign_key: { to_table: :users } |
+
+### Association
+
+* belongs_to :user
+* belongs_to :following, class_name: 'User'
+
+## 備考
