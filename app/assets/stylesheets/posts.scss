@@ -1,3 +1,40 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.post{
+  border: 1px solid;
+  width: 40%;
+  margin-top: 30px;
+  text-decoration: none;
+}
+
+.post-date{
+  color: gray;
+  text-decoration: none;
+}
+
+#like-btn {
+  width: 25px;
+  height: 30px;
+  font-size: 25px;
+  color:red; 
+  margin-left: 20px;
+}
+
+#unlike-btn {
+  width: 25px;
+  height: 30px;
+  font-size: 25px;
+  color: gray;
+  margin-left: 20px;
+}
+
+.heart-length {
+  text-decoration: none;
+}
+
+.field_with_errors {
+  display: contents;
+}
+
+

@@ -1,6 +1,7 @@
 <h1>FollowApp</h1>
 
-<%= link_to "こんにちは、#{current_user.nickname}さん" ,"#" %><br>
+こんにちは、
+<%= link_to "#{current_user.nickname}さん" ,"#" %><br>
 <%#= link_to "こんにちは、#{current_user.nickname}さん" ,user_path(current_user.id)%><br>
 <%= link_to "ログアウト",destroy_user_session_path,method: :delete, class: :nav__logout %> 
 
@@ -9,4 +10,17 @@
   <%= render 'shared/error_messages', model: f.object %>
   <%= f.text_field :content ,id:"content" %>
   <%= f.submit '投稿する',id: "submit" %>
+<% end %>
+
+<% @posts.each do |post| %>
+  <div class="post">
+    投稿者：<%= link_to post.user.nickname, "#" %><br>
+    <%# 投稿者：<%= link_to post.user.nickname,user_path(post.user.id) %><br> 
+    <div class="post-date">
+      投稿日時：<%= l post.created_at %>
+    </div>
+    <div class="post-content">
+      投稿内容：<%= post.content %>
+    </div>
+  </div>
 <% end %>
