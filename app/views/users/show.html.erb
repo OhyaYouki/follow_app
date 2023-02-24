@@ -1,0 +1,48 @@
+<div class="user-header">
+  <div class="user-name">
+    <%= "#{@user.nickname}さんの詳細ページ" %>
+  </div>
+
+  <div class="follow-unfollow">
+    <% if %>
+      <div class="follow">
+        <%= link_to "フォローする" ,"#", remote: true %>
+      </div>
+    <% else %>
+      <div class="unfollow">
+        <%= link_to "フォローする" ,"#", remote: true %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="follow-length">
+  <div class="user-follow">
+    フォロー <%= "100" %>
+  </div>
+
+  <div class="user-follower">
+    フォロワー <%= "200" %>
+  </div>
+</div>
+
+
+<div class="user-show">
+  <%= link_to "トップページに戻る", root_path %>
+
+  <div class="user-show-like"> 
+    <%="#{@user.nickname}さんの投稿" %>
+  </div>
+
+  <% @posts.each do |post| %>
+    <div class="post">
+      <div class="post-date">
+        投稿日時：<%= l post.created_at %>
+      </div>
+      <div class="post-content">
+        投稿者：<%= post.user.nickname %><br>
+        投稿内容：<%= post.content %>
+      </div>
+    </div>
+  <% end %>
+</div>

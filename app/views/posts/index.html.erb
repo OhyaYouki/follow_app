@@ -1,8 +1,7 @@
 <h1>FollowApp</h1>
 
 こんにちは、
-<%= link_to "#{current_user.nickname}さん" ,"#" %><br>
-<%#= link_to "こんにちは、#{current_user.nickname}さん" ,user_path(current_user.id)%><br>
+<%= link_to "#{current_user.nickname}さん" ,user_path(current_user.id)%><br>
 <%= link_to "ログアウト",destroy_user_session_path,method: :delete, class: :nav__logout %> 
 
 
