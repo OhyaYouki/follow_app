@@ -1,48 +1,56 @@
-<div class="user-header">
-  <div class="user-name">
-    <%= "#{@user.nickname}さんの詳細ページ" %>
+<div class="user-wrap">
+
+  <div class="user-header">
+    <div class="user-name">
+      <%= "#{@user.nickname}さんの詳細ページ" %>
+    </div>
+
+    <div class="follow-unfollow">
+      <% if true %>
+        <%= link_to "#", remote: true ,class: :follow_btn do %>
+          <div class="follow">
+            フォローする
+          </div>
+        <% end %>
+      <% else %>
+        <%= link_to "#", remote: true ,class: :unfollow_btn do %>
+          <div class="unfollow">
+            フォロー解除
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 
-  <div class="follow-unfollow">
-    <% if %>
-      <div class="follow">
-        <%= link_to "フォローする" ,"#", remote: true %>
-      </div>
-    <% else %>
-      <div class="unfollow">
-        <%= link_to "フォローする" ,"#", remote: true %>
+  <div class="follow-length">
+    <div class="user-follow">
+      <%= link_to "フォロー #{100}", "#" ,class: :user_follow_length %>
+    </div>
+
+    <div class="user-follower">
+      <%= link_to "フォロワー #{200}", "#" ,class: :user_follow_length %>
+    </div>
+  </div>
+
+
+  <div class="user-show">
+    <%= link_to "トップページに戻る", root_path %>
+
+    <div class="user-show-like"> 
+      <%="#{@user.nickname}さんの投稿" %>
+    </div>
+
+    <% @posts.each do |post| %>
+      <div class="post">
+        <div class="post-date">
+          投稿日時：<%= l post.created_at %>
+        </div>
+        <div class="post-content">
+          投稿者：<%= post.user.nickname %><br>
+          投稿内容：<%= post.content %>
+        </div>
       </div>
     <% end %>
   </div>
-</div>
 
-<div class="follow-length">
-  <div class="user-follow">
-    フォロー <%= "100" %>
-  </div>
-
-  <div class="user-follower">
-    フォロワー <%= "200" %>
-  </div>
-</div>
-
-
-<div class="user-show">
-  <%= link_to "トップページに戻る", root_path %>
-
-  <div class="user-show-like"> 
-    <%="#{@user.nickname}さんの投稿" %>
-  </div>
-
-  <% @posts.each do |post| %>
-    <div class="post">
-      <div class="post-date">
-        投稿日時：<%= l post.created_at %>
-      </div>
-      <div class="post-content">
-        投稿者：<%= post.user.nickname %><br>
-        投稿内容：<%= post.content %>
-      </div>
-    </div>
-  <% end %>
 </div>

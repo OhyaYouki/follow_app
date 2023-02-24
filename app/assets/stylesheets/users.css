@@ -1,0 +1,76 @@
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+}
+
+.user-name, .user-show-like {
+  font-weight: bold;
+}
+
+
+/* フォロー、フォロー解除のcss */
+/* ===================================== */
+
+.follow {
+  padding: 10px 20px;
+  background-color: rgb(29, 155, 240,0.5);
+  border-radius: 20px;
+}
+
+.follow:hover {
+  background-color: rgb(29, 155, 240);
+  transition: 1s;
+}
+
+.follow_btn {
+  text-decoration: none;
+  color: white;
+}
+
+
+.unfollow {
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.unfollow_btn {
+  text-decoration: none;
+  color: black;
+}
+
+.unfollow:hover {
+  background-color: #cedae1;
+  transition: 1s;
+}
+
+
+
+/* フォロワー数のcss */
+/* ===================================== */
+
+.follow-length {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+  margin: 20px 0;
+}
+
+.user_follow_length {
+  text-decoration: none;
+  color: black;
+}
+
+/* ===================================== */
+
+
+
+.user-show-like {
+  margin-top: 20px;
+}
+
+.post_content_user {
+  text-decoration: none;
+}
