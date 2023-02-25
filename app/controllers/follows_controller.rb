@@ -1,11 +1,11 @@
 class FollowsController < ApplicationController
   def create
-    binding.pry
+    @user = User.find(params[:user_id])
     @follow = Relationship.create(user_id: current_user.id, following_id: params[:user_id])
   end
 
   def destroy
-    binding.pry
+    @user = User.find(params[:user_id])
     follow = Relationship.find_by(user_id: current_user.id, following_id: params[:user_id])
     follow.destroy
   end

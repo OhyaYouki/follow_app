@@ -5,7 +5,7 @@
       <%= "#{@user.nickname}さんの詳細ページ" %>
     </div>
 
-    <div class="follow-unfollow">
+    <div id="follow-unfollow">
       <% if @user != current_user %>
         <% if @follow %>
           <%= link_to user_follow_path(@user, @follow), method: :delete, remote: true, class: :unfollow_btn do %>
