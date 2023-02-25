@@ -1,19 +1,37 @@
-<% if @user != current_user %>
-  <% if @follow %>
-    <%= link_to user_follow_path(@user, @follow), method: :delete, remote: true, class: :unfollow_btn do %>
-      <div class="unfollow">
-        フォロー解除
-      </div>
-    <% end %>
-  <% else %>
-    <%= link_to user_follows_path(@user), method: :post, remote: true, class: :follow_btn do %>
-      <div class="follow">
-        フォローする
-      </div>
-    <% end %>
-  <% end %>
-<% else %>
-  <div class="user-update">
-    プロフィールを編集
+<div class="user-header">
+  <div class="user-name">
+    <%= "#{@user.nickname}さんの詳細ページ" %>
   </div>
-<% end %>
+
+  <div class="follow-unfollow">
+    <% if @user != current_user %>
+      <% if @follow %>
+        <%= link_to user_follow_path(@user, @follow), method: :delete, remote: true, class: :unfollow_btn do %>
+          <div class="unfollow">
+            フォロー解除
+          </div>
+        <% end %>
+      <% else %>
+        <%= link_to user_follows_path(@user), method: :post, remote: true, class: :follow_btn do %>
+          <div class="follow">
+            フォローする
+          </div>
+        <% end %>
+      <% end %>
+    <% else %>
+      <div class="user-update">
+        プロフィールを編集
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="follow-length">
+  <div class="user-follow">
+    <%= link_to "フォロー #{@following.length}", "#" ,class: :user_follow_length %>
+  </div>
+
+  <div class="user-follower">
+    <%= link_to "フォロワー #{@followed.length}", "#" ,class: :user_follow_length %>
+  </div>
+</div>
