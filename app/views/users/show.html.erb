@@ -6,20 +6,25 @@
     </div>
 
     <div class="follow-unfollow">
-      <% if true %>
-        <%= link_to "#", remote: true ,class: :follow_btn do %>
-          <div class="follow">
-            フォローする
-          </div>
+      <% if @user != current_user %>
+        <% if @follow %>
+          <%= link_to user_follow_path(@user, @follow), method: :delete, remote: true, class: :unfollow_btn do %>
+            <div class="unfollow">
+              フォロー解除
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to user_follows_path(@user), method: :post, remote: true, class: :follow_btn do %>
+            <div class="follow">
+              フォローする
+            </div>
+          <% end %>
         <% end %>
       <% else %>
-        <%= link_to "#", remote: true ,class: :unfollow_btn do %>
-          <div class="unfollow">
-            フォロー解除
-          </div>
-        <% end %>
+        <div class="user-update">
+          プロフィールを編集
+        </div>
       <% end %>
-      <%# プロフィールを編集 %>
     </div>
   </div>
 
