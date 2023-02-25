@@ -6,7 +6,7 @@ class FollowsController < ApplicationController
   end
 
   def destroy
-    follow = Relationship.find_by(user_id: current_user.id, following_id: params[:user_id])
+    follow = Relationship.find(params[:id])
     follow.destroy
   end
 
