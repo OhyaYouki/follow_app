@@ -15,9 +15,9 @@
 * has_many :posts
 
 * has_many :relationships        , foreign_key: "user_id"
-* has_many :following            , through: :relationships           , source: :following
-* has_many :passive_relationships, class_name: 'Relationship'        , foreign_key: 'follow_id'
-* has_many :followers            , through: :reverse_of_relationships, source: :user
+* has_many :followings           , through: :relationships           , source: :following
+* has_many :passive_relationships, class_name: "Relationship"        , foreign_key: 'following_id'
+* has_many :followers            , through: :passive_relationships   , source: :user
 
 
 
