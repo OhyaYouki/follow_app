@@ -1,0 +1,23 @@
+<div class="user-follow-lists">
+  <div class="user-show">
+    <%= link_to "#{@user.nickname}さん詳細ページへ戻る",user_path(@user.id) %><br> 
+  </div>
+
+  <div class="user-name">
+    <%= "#{@user.nickname}さんをフォローしているユーザー"%><br> 
+  </div>
+
+  <div class="non-follow">
+    <% if @followed.length == 0 %>
+      <%= "#{@user.nickname}さんをフォローしているユーザーはいません"%>
+    <% end %>
+  </div>
+
+  <div class="follow-lists">
+    <% @followed.each do |followed| %>
+      <div class="post">
+        ユーザー名：<%= link_to followed.user.nickname,user_path(followed.user.id) %><br> 
+      </div>
+    <% end %>
+  </div>
+</div>

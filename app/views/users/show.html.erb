@@ -32,11 +32,11 @@
 
     <div class="follow-length">
       <div class="user-follow">
-        <%= link_to "フォロー #{@following.length}", "#" ,class: :user_follow_length %>
+        <%= link_to "フォロー #{@following.length}", user_user_following_path(@user) ,class: :user_follow_length %>
       </div>
 
       <div class="user-follower">
-        <%= link_to "フォロワー #{@followed.length}", "#" ,class: :user_follow_length %>
+        <%= link_to "フォロワー #{@followed.length}", user_user_followed_path(@user) ,class: :user_follow_length %>
       </div>
     </div>
 

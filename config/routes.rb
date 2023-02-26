@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :posts, only: [:index,:create]
   resources :users, only: [:show] do
     resources :follows, only: [:create,:destroy]
-    get 'user_following' ,to: 'follows#user_follow'
-    get 'user_followed' ,to: 'follows#user_follower'
+    get 'user_following' ,to: 'follows#user_following'
+    get 'user_followed' ,to: 'follows#user_followed'
   end
 
 end

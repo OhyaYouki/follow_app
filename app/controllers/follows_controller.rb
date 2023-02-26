@@ -1,5 +1,5 @@
 class FollowsController < ApplicationController
-  before_action :set_user, only: [:create, :destroy, :user_follow, :user_follower]
+  before_action :set_user, only: [:create, :destroy, :user_following, :user_followed]
 
   def create
     @follow = Relationship.create(user_id: current_user.id, following_id: params[:user_id])
