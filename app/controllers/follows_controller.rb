@@ -1,37 +1,27 @@
 class FollowsController < ApplicationController
   before_action :set_user
+  before_action :set_following  ,only: [:user_following]
+  before_action :set_followed   ,only: [:user_followed]
 
   def create
     @follow = Relationship.create(user_id: current_user.id, following_id: params[:user_id])
 
-    # @userがフォローしている人たち
-    @following = @user.followings
-    # @following = Relationship.where(user_id: @user.id)
-  
-    # @userをフォローしている人たち
-    @followed = @user.followers
-    # @followed = Relationship.where(following_id: @user.id)
+    set_following
+    set_followed
   end
 
   def destroy
     follow = Relationship.find(params[:id])
     follow.destroy
 
-    # @userがフォローしている人たち
-    @following = @user.followings
-
-    # @userをフォローしている人たち
-    @followed = @user.followers
+    set_following
+    set_followed 
   end
 
   def user_following
-    # @userがフォローしている人たち
-    @following = @user.followings
   end
 
   def user_followed
-    # @userをフォローしている人たち
-    @followed = @user.followers
   end
 
   private
@@ -40,11 +30,17 @@ class FollowsController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
-  # これはいる？
-  # def follow_params
-  #   # 「誰(current_user)が」「誰(params[:user_id])を」フォローするか
-  #   user_id = current_user.id
-  #   following_id = params[:user_id]
-  #   params.permit(:user_id).merge(user_id: current_user.id)
-  # end
+  def set_following
+    # @userがフォローしている人たち
+    @following = @user.followings
+
+    # @following = Relationship.where(user_id: @user.id)
+  end
+
+  def set_followed
+    # @userをフォローしている人たち
+    @followed = @user.followers    
+
+    # @followed = Relationship.where(following_id: @user.id)
+  end
 end
