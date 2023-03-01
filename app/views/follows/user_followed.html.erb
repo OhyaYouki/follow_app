@@ -16,7 +16,7 @@
   <div class="follow-lists">
     <% @followed.each do |followed| %>
       <div class="post">
-        ユーザー名：<%= link_to followed.user.nickname,user_path(followed.user.id) %><br> 
+        ユーザー名：<%= link_to followed.nickname,user_path(followed.id) %><br> 
       </div>
     <% end %>
   </div>

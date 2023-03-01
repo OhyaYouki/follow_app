@@ -3,8 +3,8 @@
     <%= link_to "#{@user.nickname}さん詳細ページへ戻る",user_path(@user.id) %><br> 
   </div>
 
-    <div class="user-name">
-  <%= "#{@user.nickname}さんがフォローしているユーザー"%><br> 
+  <div class="user-name">
+    <%= "#{@user.nickname}さんがフォローしているユーザー"%><br> 
   </div>
 
   <div class="non-follow">
@@ -16,7 +16,7 @@
   <div class="follow-lists">
     <% @following.each do |following| %>
       <div class="post">
-        ユーザー名：<%= link_to following.following.nickname,user_path(following.following.id) %><br> 
+        ユーザー名：<%= link_to following.nickname,user_path(following.id) %><br> 
       </div>
     <% end %>
   </div>

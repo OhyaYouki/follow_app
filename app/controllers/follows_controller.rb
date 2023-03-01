@@ -1,14 +1,16 @@
 class FollowsController < ApplicationController
-  before_action :set_user, only: [:create, :destroy, :user_following, :user_followed]
+  before_action :set_user
 
   def create
     @follow = Relationship.create(user_id: current_user.id, following_id: params[:user_id])
 
     # @userがフォローしている人たち
-    @following = Relationship.where(user_id: @user.id)
-
+    @following = @user.followings
+    # @following = Relationship.where(user_id: @user.id)
+  
     # @userをフォローしている人たち
-    @followed = Relationship.where(following_id: @user.id)
+    @followed = @user.followers
+    # @followed = Relationship.where(following_id: @user.id)
   end
 
   def destroy
@@ -16,20 +18,20 @@ class FollowsController < ApplicationController
     follow.destroy
 
     # @userがフォローしている人たち
-    @following = Relationship.where(user_id: @user.id)
+    @following = @user.followings
 
     # @userをフォローしている人たち
-    @followed = Relationship.where(following_id: @user.id)
+    @followed = @user.followers
   end
 
   def user_following
     # @userがフォローしている人たち
-    @following = Relationship.where(user_id: @user.id)
+    @following = @user.followings
   end
 
   def user_followed
     # @userをフォローしている人たち
-    @followed = Relationship.where(following_id: @user.id)
+    @followed = @user.followers
   end
 
   private
